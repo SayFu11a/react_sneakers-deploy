@@ -54,12 +54,17 @@ function Drawer({ onClickClose, onRemuve, cartItem = [], opened }) {
                   <div className="items">
                      {cartItem.map((obj) => (
                         <div key={obj.id} className="cartItem d-flex align-center mb-20">
-                           <div style={{ backgroundImage: `url(${obj.imgUrl})` }} className="cartItemImg"></div>
+                           <div style={{ backgroundImage: `url(${obj.imgUrl})` }}
+                              className="cartItemImg"></div>
                            <div className="mr-20 flex">
                               <p className="mp-5">{obj.title}</p>
                               <b>{obj.price} руб.</b>
                            </div>
-                           <img onClick={() => onRemuve(obj.id)} className="removeBtn" src="img/btn-remove.svg" alt="Remove" />
+                           <img
+                              onClick={() => onRemuve(obj.id)}
+                              className="removeBtn"
+                              src="img/btn-remove.svg"
+                              alt="Remove" />
                         </div>
                      ))}
                   </div>
@@ -99,3 +104,56 @@ function Drawer({ onClickClose, onRemuve, cartItem = [], opened }) {
 }
 
 export default Drawer;
+
+
+
+// [
+//    {
+//      "id": "1",
+//      "price": 8499,
+//      "title": "Мужские Кроссовки Nike Blazer Mid Suede",
+//      "imgUrl": "img/sneakers/01.jpg"
+//    },
+//    {
+//      "id": "2",
+//      "imgUrl": "img/sneakers/02.jpg",
+//      "title": "Мужские Кроссовки Nike Air Max 270",
+//      "price": 8499
+//    },
+//    {
+//      "id": "3",
+//      "imgUrl": "img/sneakers/03.jpg",
+//      "title": "Мужские Кроссовки Nike Blazer Mid Suede",
+//      "price": 9499
+//    },
+//    {
+//      "id": "4",
+//      "imgUrl": "img/sneakers/04.jpg",
+//      "title": "Кроссовки Puma X Aka Boku Future Rider",
+//      "price": 10499
+//    },
+//    {
+//      "id": "5",
+//      "imgUrl": "img/sneakers/05.jpg",
+//      "title": "Мужские Кроссовки Under Armour Curry 8",
+//      "price": 9499
+//    },
+//    {
+//      "id": "6",
+//      "imgUrl": "img/sneakers/06.jpg",
+//      "title": "Мужские Кроссовки Nike Kyrie 7",
+//      "price": 9499
+//    },
+//    {
+//      "id": "7",
+//      "imgUrl": "img/sneakers/07.jpg",
+//      "title": "Мужские Кроссовки Jordan Air Jordan 11",
+//      "price": 9499
+//    },
+//    {
+//      "id": "8",
+//      "imgUrl": "img/sneakers/12.jpg",
+//      "title": "Мужские Кроссовки Nike Kyrie Flytrap IV",
+//      "price": 9499
+//    }
+//  ]
