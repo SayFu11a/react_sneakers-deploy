@@ -14,7 +14,7 @@ export const Info = ({ title, image, discription }) => {
          <h2>{title}</h2>
          <p className="opacity-6">{discription}</p>
          <button onClick={() => setIsCartOpened(false)} className="greenButton">
-            <img src="img/arrow.svg" alt="Arrow" />
+            <img src="https://sayfu11a.github.io/react_sneakers-deploy/img/arrow.svg" alt="Arrow" />
             Вернуться назад
          </button>
       </div>
