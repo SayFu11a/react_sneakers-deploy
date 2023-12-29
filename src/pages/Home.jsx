@@ -8,7 +8,7 @@ function Home({
    setSearchValue,
    onAddToCart,
    onAddToFavorite,
-   isLoading
+   isLoading,
 }) {
    const renderItm = () => {
       const filtredItm = items.filter((item) =>
@@ -28,24 +28,34 @@ function Home({
    return (
       <div className="content p-40">
          <div className="d-flex align-center justify-between mb-40">
-            <h1>{searchValue == '' ? 'Все кроссовки' : 'Поиск по запросу: ' + "'" + searchValue + "'"}</h1>
+            <h1>
+               {searchValue == '' ? 'Все номера' : 'Поиск по запросу: ' + "'" + searchValue + "'"}
+            </h1>
             <div className="serch-block d-flex">
-               <img src="https://sayfu11a.github.io/react_sneakers-deploy/img/serch.svg" alt="Serch" />
-               <input onChange={onChangeSearchInput} value={searchValue} type="text" placeholder="Поиск..." />
-               {searchValue &&
-                  <img className='clear'
+               <img
+                  src="https://sayfu11a.github.io/react_sneakers-deploy/img/serch.svg"
+                  alt="Serch"
+               />
+               <input
+                  onChange={onChangeSearchInput}
+                  value={searchValue}
+                  type="text"
+                  placeholder="Поиск..."
+               />
+               {searchValue && (
+                  <img
+                     className="clear"
                      onClick={() => setSearchValue('')}
                      src="https://sayfu11a.github.io/react_sneakers-deploy/img/btn-remove.svg"
-                     alt="Clear" />}
+                     alt="Clear"
+                  />
+               )}
             </div>
          </div>
 
-         <div className="d-flex flex-wrap">
-            {renderItm()}
-         </div>
+         <div className="flex-wrap">{renderItm()}</div>
       </div>
-   )
-
+   );
 }
 
 export default Home;

@@ -1,9 +1,9 @@
 import React from 'react';
-import styles from './Card.module.scss'
+import styles from './Card.module.scss';
 
 import AppContext from '../../context';
 
-import ContentLoader from "react-content-loader"
+import ContentLoader from 'react-content-loader';
 
 function Card({
    loading = false,
@@ -13,72 +13,76 @@ function Card({
    price,
    onPlus,
    onFavorite = false,
-   favorited = false
+   favorited = false,
 }) {
-
-
    const { isAddedToCart } = React.useContext(AppContext);
    const [isOnFavorite, setIsOnFavorite] = React.useState(favorited);
-   const dataProps = { id, parentId: id, imgUrl, title, price }
+   const dataProps = { id, parentId: id, imgUrl, title, price };
 
    const onClickPlus = () => {
-      onPlus(dataProps)
-   }
+      onPlus(dataProps);
+   };
 
    const onClickFavorite = () => {
-      onFavorite(dataProps)
+      onFavorite(dataProps);
       setIsOnFavorite(!isOnFavorite);
-   }
-
+   };
 
    // React.useEffect(() => { }, [isOnPlus])
-   React.useEffect(() => { }, [isOnFavorite])
-
+   React.useEffect(() => {}, [isOnFavorite]);
 
    return (
       <div className={styles.card}>
-         {loading ? (<ContentLoader
-            speed={2}
-            width={210}
-            height={230}
-            viewBox="0 0 210 230"
-            backgroundColor="#f3f3f3"
-            foregroundColor="#ecebeb"
-         >
-            <rect x="0" y="0" rx="10" ry="10" width="150" height="127" />
-            <rect x="48" y="26" rx="3" ry="3" width="52" height="6" />
-            <rect x="0" y="146" rx="5" ry="5" width="150" height="15" />
-            <rect x="0" y="166" rx="5" ry="5" width="90" height="15" />
-            <rect x="0" y="203" rx="5" ry="5" width="80" height="24" />
-            <rect x="118" y="195" rx="3" ry="3" width="32" height="32" />
-         </ContentLoader>) :
+         {loading ? (
+            <ContentLoader
+               speed={2}
+               width={1000}
+               height={295}
+               viewBox="0 0 1000 295"
+               backgroundColor="#f3f3f3"
+               foregroundColor="#ecebeb">
+               <rect x="900" y="153" rx="3" ry="3" width="88" height="30" />
+               <rect x="576" y="165" rx="3" ry="3" width="307" height="15" />
+               <rect x="-2" y="5" rx="0" ry="0" width="560" height="295" />
+               <rect x="330" y="254" rx="0" ry="0" width="0" height="2" />
+            </ContentLoader>
+         ) : (
             <>
-               {onFavorite && <div className={styles.favorite} >
-                  <img
-                     onClick={onClickFavorite}
-                     src={isOnFavorite ?
-                        "https://sayfu11a.github.io/react_sneakers-deploy/img/liked.svg" :
-                        "https://sayfu11a.github.io/react_sneakers-deploy/img/unliked.png"}
-                     alt="Unliked" />
-               </div>}
-               <img width={133} height={112} src={imgUrl} alt="Sneakers" />
-               <h5>{title}</h5>
-               <div className="d-flex justify-between align-center">
-                  <div className="d-flex flex-column">
-                     <span>Цена:</span>
-                     <b>{price} руб.</b>
+               {onFavorite && (
+                  <div className={styles.favorite}>
+                     <img
+                        onClick={onClickFavorite}
+                        src={
+                           isOnFavorite
+                              ? 'https://sayfu11a.github.io/react_sneakers-deploy/img/liked.svg'
+                              : 'https://sayfu11a.github.io/react_sneakers-deploy/img/unliked.png'
+                        }
+                        alt="Unliked"
+                     />
                   </div>
-                  {onPlus && <img
-                     className={styles.plus}
-                     onClick={onClickPlus}
-                     src={isAddedToCart(id) ?
-                        "https://sayfu11a.github.io/react_sneakers-deploy/img/btn-cheked.svg" :
-                        "https://sayfu11a.github.io/react_sneakers-deploy/img/btn-plus.svg"
-                     } alt="Plus"
-                  />}
+               )}
+               <img width={560} height={295} src={imgUrl} alt="Sneakers" />
+               <h5 className={styles.title}>{title}</h5>
+               <div className="d-flex flex-row justify-content-start">
+                  <div className={styles.price}>
+                     <span>Цена:</span>
+                     <b>{price}р.</b>
+                  </div>
+                  {onPlus && (
+                     <img
+                        className={styles.plus}
+                        onClick={onClickPlus}
+                        src={
+                           isAddedToCart(id)
+                              ? 'https://sayfu11a.github.io/react_sneakers-deploy/img/btn-cheked.svg'
+                              : 'https://sayfu11a.github.io/react_sneakers-deploy/img/btn-plus.svg'
+                        }
+                        alt="Plus"
+                     />
+                  )}
                </div>
-            </>}
-
+            </>
+         )}
       </div>
    );
 }
